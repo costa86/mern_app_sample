@@ -5,16 +5,29 @@ export default class EditPost extends Component {
         title: "",
         description: "",
         submitDisabled: true,
-        id:"",
-        msg: ""
+        id: "",
     };
 
+    getPost = async () => {
+        try {
+            let url = await fetch("http://localhost:3000/posts/" + this.props.match.params.id);
+            let res = await url.json();
+            console.log(res.title);
+
+            this.setState({
+                title: res.title,
+                description: res.description,
+                id: res._id
+            });
+
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
+
     componentDidMount() {
-        this.setState({
-            title: this.props.title,
-            id:this.props.id
-            //description: this.props.description
-        });
+        this.getPost();
     }
 
 
@@ -34,7 +47,8 @@ export default class EditPost extends Component {
         e.preventDefault();
         let newPost = {
             title: this.state.title,
-            description: this.state.description
+            description: this.state.description,
+            id: this.state.id
         };
 
         let options = {
@@ -46,13 +60,12 @@ export default class EditPost extends Component {
         };
 
         try {
-            let url = await fetch("http://localhost:3000/posts"+this.state.id, options);
+            let url = await fetch("http://localhost:3000/posts/" + this.state.id, options);
             let res = await url.json();
             console.log(res);
 
             alert("Post edited");
-            window.location.reload();
-
+            this.props.history.push('/');
         } catch (error) {
             console.log(error);
         }
@@ -61,8 +74,6 @@ export default class EditPost extends Component {
     render() {
         return (
             <div className="container-fluid">
-                <p>{this.state.msg}</p>
-
                 <form onSubmit={this.postPost}>
                     <div className="form-row">
                         <div className="col">
@@ -71,7 +82,7 @@ export default class EditPost extends Component {
 
                         </div>
                         <div className="col">
-                            Description:<input id="desc" className="form-control" onChange={this.changeState} name="description" placeholder="Mininum of 5 characters"></input>
+                            Description:<input value={this.state.description} id="desc" className="form-control" onChange={this.changeState} name="description" placeholder="Mininum of 5 characters"></input>
                             <small id="desc" class="form-text text-muted">Characters: {this.state.description.length}</small>
                         </div>
                     </div>

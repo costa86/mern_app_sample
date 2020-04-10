@@ -5,7 +5,6 @@ export default class AddPost extends Component {
         title: "",
         description: "",
         submitDisabled: true,
-        msg: ""
     };
 
     //changeState = (x) => this.setState({ [x.target.name]: x.target.value });
@@ -43,7 +42,7 @@ export default class AddPost extends Component {
             console.log(res);
 
             alert("Post added");
-            window.location.reload();
+            this.props.history.push('/');
 
         } catch (error) {
             console.log(error);
@@ -53,7 +52,6 @@ export default class AddPost extends Component {
     render() {
         return (
             <div className="container-fluid">
-                <p>{this.state.msg}</p>
 
                 <form onSubmit={this.postPost}>
                     <div className="form-row">

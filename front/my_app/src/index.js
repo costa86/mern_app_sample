@@ -13,7 +13,7 @@ class MyApp extends React.Component {
         <BrowserRouter>
             <Route exact path="/" component={Posts} />
             <Route path="/add-post" component={AddPost} />
-            <Route path="/edit-post" component={EditPost} />
+            <Route path="/edit-post/:id" component={EditPost} />
         </BrowserRouter>
       </div>
     );

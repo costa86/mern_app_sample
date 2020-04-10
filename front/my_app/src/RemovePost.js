@@ -25,7 +25,7 @@ export default class RemovePost extends Component {
 
     render() {
         return (
-            <button onClick={this.deletePost}>DELETE</button>
+            <button className="btn btn-danger mr-1" onClick={this.deletePost}>DELETE</button>
         );
     }
 }

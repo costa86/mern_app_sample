@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import RemovePost from "./RemovePost";
 import EditPost from "./EditPost";
+import { Link } from "react-router-dom";
 
 export default class Posts extends Component {
     state = {
@@ -30,17 +31,21 @@ export default class Posts extends Component {
                 <td>{post.description}</td>
                 <td>
                     <RemovePost id={post._id} />
+                    <button className="btn btn-success mr-1"><Link to={"/edit-post/" + post._id}></Link>EDIT</button>
                 </td>
             </tr>)
         );
         if (posts.length) {
             res = (
-                <table className="table table-bordered">
-                    <th>TITLE</th>
-                    <th>DESCRIPTION</th>
-                    <th>ACTIONS</th>
-                    {records}
-                </table>
+                <>
+                    <table className="table table-bordered">
+                        <th>TITLE</th>
+                        <th>DESCRIPTION</th>
+                        <th>ACTIONS</th>
+                        {records}
+                    </table>
+                Records: {posts.length}
+                </>
             );
         }
         return res;
@@ -55,6 +60,7 @@ export default class Posts extends Component {
             <>
                 <div className="container-fluid">
                     {this.displayPostsTable(this.state.posts)}
+
                 </div>
             </>
         )
