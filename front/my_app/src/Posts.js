@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import RemovePost from "./RemovePost";
-import EditPost from "./EditPost";
 import { Link } from "react-router-dom";
 
 export default class Posts extends Component {
@@ -25,13 +24,14 @@ export default class Posts extends Component {
     displayPostsTable = (posts) => {
         let res;
 
-        let records = posts.map((post) =>
+        let records = posts.map((post, index) =>
             (<tr key={post._id}>
+                <td>{index + 1}</td>
                 <td>{post.title}</td>
                 <td>{post.description}</td>
                 <td>
                     <RemovePost id={post._id} />
-                    <button className="btn btn-success mr-1"><Link to={"/edit-post/" + post._id}></Link>EDIT</button>
+                    <button className="btn btn-dark mr-1"><Link to={"/edit-post/" + post._id}>EDIT</Link></button>
                 </td>
             </tr>)
         );
@@ -39,10 +39,17 @@ export default class Posts extends Component {
             res = (
                 <>
                     <table className="table table-bordered">
-                        <th>TITLE</th>
-                        <th>DESCRIPTION</th>
-                        <th>ACTIONS</th>
-                        {records}
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>TITLE</th>
+                                <th>DESCRIPTION</th>
+                                <th>ACTIONS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {records}
+                        </tbody>
                     </table>
                 Records: {posts.length}
                 </>

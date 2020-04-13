@@ -6,7 +6,8 @@ import Posts from './Posts';
 import AddPost from "./AddPost";
 import EditPost from './EditPost';
 
-class MyApp extends React.Component {
+
+class Header extends React.Component {
   render() {
     return (
       <div>
@@ -22,7 +23,7 @@ class MyApp extends React.Component {
 
 ReactDOM.render(
   <React.StrictMode>
-    <MyApp />
+    <Header />
   </React.StrictMode>,
   document.getElementById('root')
 );

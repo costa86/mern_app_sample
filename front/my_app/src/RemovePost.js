@@ -17,6 +17,7 @@ export default class RemovePost extends Component {
             console.log(res);
             alert("Post deleted");
             window.location.reload();
+            //this.props.history.push('/');
 
         } catch (error) {
             console.log(error);
