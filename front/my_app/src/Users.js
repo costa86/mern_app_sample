@@ -10,6 +10,7 @@ export default class Users extends Component {
     };
 
     getAll = async () => {
+
         try {
             let url = await fetch("http://localhost:3000/users");
             let res = await url.json();
@@ -22,6 +23,8 @@ export default class Users extends Component {
 
 
     displayRecordsTable = (records) => {
+        document.title = "Users | Posts Web App" ;
+
         let res;
 
         let rec = records.map((each, index) =>
@@ -60,13 +63,9 @@ export default class Users extends Component {
 
     componentDidMount() {
         this.getAll();
-
     }
 
-    componentDidUpdate() {
-        let updatedTitle = `Users:  ${this.state.records.length} | ${document.title}`;
-        document.title = updatedTitle;
-    }
+
 
     render() {
         return (

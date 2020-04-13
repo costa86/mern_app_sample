@@ -11,7 +11,7 @@ import EditUser from "./EditUser";
 
 class Header extends React.Component {
 
-  componentDidMount(){
+  componentDidMount() {
     document.title = "Posts Web App";
   }
 
@@ -19,12 +19,12 @@ class Header extends React.Component {
     return (
       <div>
         <BrowserRouter>
-            <Route exact path="/" component={Posts} />
-            <Route path="/add-post" component={AddPost} />
-            <Route path="/edit-post/:id" component={EditPost} />
-            <Route path="/users" component={Users} />
-            <Route path="/add-user" component={AddUser} />
-            <Route path="/edit-user/:id" component={EditUser} />
+          <Route exact path="/" component={Posts} />
+          <Route path="/add-post" component={AddPost} />
+          <Route path="/edit-post/:id" component={EditPost} />
+          <Route path="/users" component={Users} />
+          <Route path="/add-user" component={AddUser} />
+          <Route path="/edit-user/:id" component={EditUser} />
 
         </BrowserRouter>
       </div>

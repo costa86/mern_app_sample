@@ -40,7 +40,6 @@ export default class AddUser extends Component {
             let url = await fetch("http://localhost:3000/users", options);
             let res = await url.json();
             console.log(res);
-
             alert("User added");
             this.props.history.push('/users');
 
@@ -50,6 +49,7 @@ export default class AddUser extends Component {
     }
 
     render() {
+
         return (
             <div className="container-fluid">
 

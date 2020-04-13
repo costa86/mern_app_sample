@@ -22,6 +22,8 @@ export default class Posts extends Component {
 
 
     displayPostsTable = (posts) => {
+        document.title = "Posts | Posts Web App" ;
+
         let res;
 
         let records = posts.map((post, index) =>
@@ -62,10 +64,6 @@ export default class Posts extends Component {
         this.getPosts();
     }
 
-    componentDidUpdate() {
-        let updatedTitle = `Posts:  ${this.state.posts.length} | ${document.title}`;
-        document.title = updatedTitle;
-    }
 
     render() {
         return (
