@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const morgan = require("morgan");
 const cors = require("cors");
 const postsRoute = require("./routes/posts");
+const usersRoute = require("./routes/users");
 const app = express();
 const port = 3000;
 app.get("/", (req, res) => res.send("hello"));
@@ -11,7 +12,7 @@ app.use(cors());
 app.use(morgan("tiny"));
 app.use(express.json());
 app.use("/posts", postsRoute);
-
+app.use("/users",usersRoute);
 const atlas = process.env.ATLAS_URL;
 
 const run = async () => {
