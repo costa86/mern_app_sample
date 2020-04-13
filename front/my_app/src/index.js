@@ -6,6 +6,7 @@ import Posts from './Posts';
 import AddPost from "./AddPost";
 import EditPost from './EditPost';
 import Users from './Users';
+import AddUser from './AddUser';
 
 
 class Header extends React.Component {
@@ -17,6 +18,7 @@ class Header extends React.Component {
             <Route path="/add-post" component={AddPost} />
             <Route path="/edit-post/:id" component={EditPost} />
             <Route path="/users" component={Users} />
+            <Route path="/add-user" component={AddUser} />
 
         </BrowserRouter>
       </div>
