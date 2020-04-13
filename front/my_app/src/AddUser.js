@@ -4,7 +4,7 @@ export default class AddUser extends Component {
     state = {
         name: "",
         email: "",
-        submitDisabled:false,
+        submitDisabled: false,
     };
 
     //changeState = (x) => this.setState({ [x.target.name]: x.target.value });
@@ -52,6 +52,7 @@ export default class AddUser extends Component {
 
         return (
             <div className="container-fluid">
+                <h1 align="center">New user</h1>
 
                 <form onSubmit={this.postObject}>
                     <div className="form-row">

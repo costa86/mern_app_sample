@@ -54,7 +54,6 @@ export default class Users extends Component {
                             {rec}
                         </tbody>
                     </table>
-                Records: {rec.length}
                 </>
             );
         }
@@ -70,7 +69,7 @@ export default class Users extends Component {
     render() {
         return (
             <>
-                <h1 align="center">Users</h1>
+                <h1 align="center">Users ({this.state.records.length})</h1>
 
                 <div className="container-fluid">
                     {this.displayRecordsTable(this.state.records)}

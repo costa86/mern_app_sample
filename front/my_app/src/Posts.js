@@ -53,7 +53,6 @@ export default class Posts extends Component {
                             {records}
                         </tbody>
                     </table>
-                Records: {posts.length}
                 </>
             );
         }
@@ -68,7 +67,7 @@ export default class Posts extends Component {
     render() {
         return (
             <>
-                <h1 align="center">Posts</h1>
+                <h1 align="center">Posts ({this.state.posts.length})</h1>
                 <div className="container-fluid">
                     {this.displayPostsTable(this.state.posts)}
 

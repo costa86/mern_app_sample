@@ -53,6 +53,7 @@ export default class AddPost extends Component {
     render() {
         return (
             <div className="container-fluid">
+                <h1 align="center">New Post</h1>
                 <form onSubmit={this.postPost}>
                     <div className="form-row">
                         <div className="col">
