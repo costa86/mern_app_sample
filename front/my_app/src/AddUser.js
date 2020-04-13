@@ -20,6 +20,7 @@ export default class AddUser extends Component {
         this.setState({ [nam]: val });
     }
 
+
     postObject = async (e) => {
         e.preventDefault();
         let newObject = {
@@ -60,7 +61,7 @@ export default class AddUser extends Component {
 
                         </div>
                         <div className="col">
-                            Email:<input id="email" className="form-control" onChange={this.changeState} name="email" placeholder="Mininum of 5 characters"></input>
+                            Email:<input id="email" type="email" className="form-control" onChange={this.changeState} name="email" placeholder="Mininum of 5 characters"></input>
                             <small id="email" class="form-text text-muted">Characters: {this.state.email.length}</small>
                         </div>
                     </div>

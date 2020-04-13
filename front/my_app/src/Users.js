@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import RemovePost from "./RemovePost";
 import { Link } from "react-router-dom";
+import RemoveUser from './RemoveUser';
 
 export default class Users extends Component {
     state = {
@@ -30,9 +30,9 @@ export default class Users extends Component {
                 <td>{each.name}</td>
                 <td>{each.email}</td>
                 <td>
-{/*                     <RemovePost id={post._id} />
-                    <button className="btn btn-dark mr-1"><Link to={"/edit-post/" + post._id}>EDIT</Link></button>
- */}                </td>
+                    <RemoveUser id={each._id} />
+                    <button className="btn btn-dark mr-1"><Link to={"/edit-user/" + each._id}>EDIT</Link></button>
+                </td>
             </tr>)
         );
         if (rec.length) {
@@ -60,11 +60,19 @@ export default class Users extends Component {
 
     componentDidMount() {
         this.getAll();
+
+    }
+
+    componentDidUpdate() {
+        let updatedTitle = `Users:  ${this.state.records.length} | ${document.title}`;
+        document.title = updatedTitle;
     }
 
     render() {
         return (
             <>
+                <h1 align="center">Users</h1>
+
                 <div className="container-fluid">
                     {this.displayRecordsTable(this.state.records)}
 

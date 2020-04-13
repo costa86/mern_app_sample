@@ -23,7 +23,7 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
     try {
         const user = await User.findById(req.params.id);
-        res.json(posts);
+        res.json(user);
 
     } catch (error) {
         res.json({ message: error });

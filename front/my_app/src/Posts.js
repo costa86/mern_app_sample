@@ -62,9 +62,15 @@ export default class Posts extends Component {
         this.getPosts();
     }
 
+    componentDidUpdate() {
+        let updatedTitle = `Posts:  ${this.state.posts.length} | ${document.title}`;
+        document.title = updatedTitle;
+    }
+
     render() {
         return (
             <>
+                <h1 align="center">Posts</h1>
                 <div className="container-fluid">
                     {this.displayPostsTable(this.state.posts)}
 

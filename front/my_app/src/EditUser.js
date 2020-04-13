@@ -1,22 +1,22 @@
 import React, { Component } from 'react'
 
-export default class EditPost extends Component {
+export default class EditUser extends Component {
     state = {
-        title: "",
-        description: "",
+        name: "",
+        email: "",
         submitDisabled: true,
         id: "",
     };
 
-    getPost = async () => {
+    getUser = async () => {
         try {
-            let url = await fetch("http://localhost:3000/posts/" + this.props.match.params.id);
+            let url = await fetch("http://localhost:3000/users/" + this.props.match.params.id);
             let res = await url.json();
-            console.log(res.title);
+            console.log(res.name);
 
             this.setState({
-                title: res.title,
-                description: res.description,
+                name: res.name,
+                email: res.email,
                 id: res._id
             });
 
@@ -27,7 +27,7 @@ export default class EditPost extends Component {
     }
 
     componentDidMount() {
-        this.getPost();
+        this.getUser();
     }
 
 
@@ -37,17 +37,17 @@ export default class EditPost extends Component {
         let nam = event.target.name;
         let val = event.target.value;
         this.state.submitDisabled = (
-            this.state.title.length > min
-            && this.state.description.length > min
+            this.state.name.length > min
+            && this.state.email.length > min
         ) ? false : true;
         this.setState({ [nam]: val });
     }
 
-    postPost = async (e) => {
+    postUser = async (e) => {
         e.preventDefault();
-        let newPost = {
-            title: this.state.title,
-            description: this.state.description,
+        let newUser = {
+            name: this.state.name,
+            email: this.state.email,
             id: this.state.id
         };
 
@@ -56,16 +56,16 @@ export default class EditPost extends Component {
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
             },
-            body: JSON.stringify(newPost)
+            body: JSON.stringify(newUser)
         };
 
         try {
-            let url = await fetch("http://localhost:3000/posts/" + this.state.id, options);
+            let url = await fetch("http://localhost:3000/users/" + this.state.id, options);
             let res = await url.json();
             console.log(res);
 
-            alert("Post edited");
-            this.props.history.push('/');
+            alert("User edited");
+            this.props.history.push('/users');
         } catch (error) {
             console.log(error);
         }
@@ -74,16 +74,16 @@ export default class EditPost extends Component {
     render() {
         return (
             <div className="container-fluid">
-                <form onSubmit={this.postPost}>
+                <form onSubmit={this.postUser}>
                     <div className="form-row">
                         <div className="col">
-                            Title:<input value={this.state.title} id="title" className="form-control" onChange={this.changeState} name="title" placeholder="Mininum of 5 characters"></input>
-                            <small id="title" className="form-text text-muted">Characters: {this.state.title.length}</small>
+                            Name:<input value={this.state.name} id="name" className="form-control" onChange={this.changeState} name="name" placeholder="Mininum of 5 characters"></input>
+                            <small id="name" className="form-text text-muted">Characters: {this.state.name.length}</small>
 
                         </div>
                         <div className="col">
-                            Description:<input value={this.state.description} id="desc" className="form-control" onChange={this.changeState} name="description" placeholder="Mininum of 5 characters"></input>
-                            <small id="desc" className="form-text text-muted">Characters: {this.state.description.length}</small>
+                            Email:<input value={this.state.email} id="email" type="email" className="form-control" onChange={this.changeState} name="email" placeholder="Mininum of 5 characters"></input>
+                            <small id="email" className="form-text text-muted">Characters: {this.state.email.length}</small>
                         </div>
                     </div>
                     <br></br>
